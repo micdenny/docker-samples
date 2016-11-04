@@ -2,7 +2,7 @@ FROM microsoft/nanoserver
 
 LABEL Description="Redis" Vendor="MSOpenTech" Version="2.8"
 
-ENV maxheap=500MB
+ENV maxmemory=500MB
 
 EXPOSE 6379
 
@@ -14,4 +14,4 @@ RUN powershell -Command \
 	Expand-Archive redis.zip . ; \
 	Remove-Item redis.zip -Force
 
-CMD redis-server --maxheap %maxheap%
+CMD redis-server --maxmemory %maxmemory%
