@@ -3,6 +3,7 @@ FROM microsoft/nanoserver
 LABEL Description="Redis" Vendor="MSOpenTech" Version="3.2"
 
 ENV maxmemory=500MB
+ENV protected-mode=yes
 
 EXPOSE 6379
 
@@ -14,4 +15,4 @@ RUN powershell -Command \
 	Expand-Archive redis.zip . ; \
 	Remove-Item redis.zip -Force
 
-CMD redis-server --maxmemory %maxmemory%
+CMD redis-server --maxmemory %maxmemory% --protected-mode %protected-mode%
