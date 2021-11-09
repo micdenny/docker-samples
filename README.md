@@ -8,6 +8,7 @@
 docker build -t micdenny/rabbitmq-windows:3.6.9 ./rabbitmq/windows/3.6.9
 docker build -t micdenny/rabbitmq-windows:3.6.12 ./rabbitmq/windows/3.6.12
 docker build -t micdenny/rabbitmq-windows:3.8.16 ./rabbitmq/windows/3.8.16
+docker build -t micdenny/rabbitmq-windows:3.9.8 ./rabbitmq/windows/3.9.8
 docker build -t micdenny/rabbitmq-windows:latest ./rabbitmq/windows/latest
 ```
 
