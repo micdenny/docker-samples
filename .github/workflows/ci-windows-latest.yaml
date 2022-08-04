@@ -74,7 +74,7 @@ jobs:
         name: Build and push 3.9.22
         uses: docker/build-push-action@v3
         with:
-          context: ./rabbitmq/windows/3.89.22
+          context: ./rabbitmq/windows/3.9.22
           push: true
           tags: |
             micdenny/rabbitmq-windows:3.9.22
