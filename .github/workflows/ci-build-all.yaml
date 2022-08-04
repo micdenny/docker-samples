@@ -51,7 +51,7 @@ jobs:
       # Build and Push 3.10.7
       - name: Build the Docker image 3.10.7
         run: |
-          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-args SERVER_VERSION=ltsc2022
+          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-arg SERVER_VERSION=ltsc2022
       - name: Publish to DockerHub 3.10.7
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -64,7 +64,7 @@ jobs:
       # Build and Push 3.9.22
       - name: Build the Docker image 3.9.22
         run: |
-          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-args SERVER_VERSION=ltsc2022
+          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-arg SERVER_VERSION=ltsc2022
       - name: Publish to DockerHub 3.9.22
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -76,7 +76,7 @@ jobs:
 
       - name: Build the Docker image 3.8.35
         run: |
-          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-args SERVER_VERSION=ltsc2022
+          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-arg SERVER_VERSION=ltsc2022
       - name: Publish to DockerHub 3.8.35
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -100,7 +100,7 @@ jobs:
        # Build and Push 3.10.7
       - name: Build the Docker image 3.10.7
         run: |
-          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-args SERVER_VERSION=ltsc2019
+          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-arg SERVER_VERSION=ltsc2019
       - name: Publish to DockerHub 3.10.7
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -113,7 +113,7 @@ jobs:
       # Build and Push 3.9.22
       - name: Build the Docker image 3.9.22
         run: |
-          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-args SERVER_VERSION=ltsc2019
+          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-arg SERVER_VERSION=ltsc2019
       - name: Publish to DockerHub 3.9.22
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -125,7 +125,7 @@ jobs:
 
       - name: Build the Docker image 3.8.35
         run: |
-          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-args SERVER_VERSION=ltsc2019
+          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-arg SERVER_VERSION=ltsc2019
       - name: Publish to DockerHub 3.8.35
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
