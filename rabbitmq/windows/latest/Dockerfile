@@ -1,5 +1,5 @@
 # ltsc2019 or ltsc2022
-ARG SERVER_VERSION = 'ltsc2022'  
+ARG SERVER_VERSION='ltsc2022'  
 FROM mcr.microsoft.com/windows/servercore:${SERVER_VERSION}
 
 LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.10.7"
