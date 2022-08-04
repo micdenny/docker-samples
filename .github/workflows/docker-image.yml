@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./rabbitmq/windows/latest --file Dockerfile --tag micdenny/rabbitmq-windows:latest
+      run: docker build . --file ./rabbitmq/windows/latest/Dockerfile --tag micdenny/rabbitmq-windows:latest
