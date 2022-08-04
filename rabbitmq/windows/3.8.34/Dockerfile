@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.8.34"
 
