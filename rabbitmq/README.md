@@ -27,6 +27,13 @@ One of the important things to note about RabbitMQ is that it stores data based 
 docker run -d --hostname my-rabbit --name some-rabbit micdenny/rabbitmq-windows
 ```
 
+Specific version 
+```dotnetcli
+docker run -d --hostname my-rabbit --name some-rabbit1 micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2019 
+Or
+docker run -d --hostname my-rabbit --name some-rabbit2 micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2022 
+```
+
 ### Management Plugin
 
 The [management plugin](https://www.rabbitmq.com/management.html) is installed and enabled by default, which is available on the standard management port of 15672, with the default username and password of `guest` / `guest`.
