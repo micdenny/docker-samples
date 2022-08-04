@@ -1,0 +1,18 @@
+name: Docker Image CI 
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./rabbitmq/windows/latest --file Dockerfile --tag micdenny/rabbitmq-windows:latest
