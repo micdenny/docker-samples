@@ -5,17 +5,17 @@
 ### RabbitMQ
 
 ```shell
-docker build -t micdenny/rabbitmq-windows:3.6.9 ./rabbitmq/windows/3.6.9
-docker build -t micdenny/rabbitmq-windows:3.6.12 ./rabbitmq/windows/3.6.12
-docker build -t micdenny/rabbitmq-windows:3.8.16 ./rabbitmq/windows/3.8.16
-docker build -t micdenny/rabbitmq-windows:3.9.8 ./rabbitmq/windows/3.9.8
-docker build -t micdenny/rabbitmq-windows:latest ./rabbitmq/windows/latest
+docker build -t micdenny/rabbitmq-windows:x.y.z ./rabbitmq/windows/x.y.z
+docker build -t micdenny/rabbitmq-windows:x.y.z ./rabbitmq/windows/latest
 ```
 
+#### Build for specific Windows Server versions 
+```powershell
+docker build -t micdenny/rabbitmq-windows:x.y.z-servercore-ltsc2019 ./rabbitmq/windows/x.y.z --build-arg SERVER_VERSION=ltsc2019 
+docker build -t micdenny/rabbitmq-windows:x.y.z-servercore-ltsc2012 ./rabbitmq/windows/x.y.z --build-arg SERVER_VERSION=ltsc2022 
+```
 ### Redis
 
 ```shell
-docker build -t micdenny/redis-windows:2.8 ./redis/windows/2.8
-docker build -t micdenny/redis-windows:3.0 ./redis/windows/3.0
-docker build -t micdenny/redis-windows:3.2 ./redis/windows/3.2
+docker build -t micdenny/redis-windows:x.y ./redis/windows/x.y
 ```
