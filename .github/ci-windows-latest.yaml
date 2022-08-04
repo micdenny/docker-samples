@@ -11,8 +11,28 @@ on:
       - 'master'
 
 jobs:
-  build-docker-latest:
-    runs-on: windows-2019
+  # build-docker-latest:  #this step can be removed later
+  #   runs-on: windows-2022
+  #   steps:
+  #     -
+  #       name: Checkout
+  #       uses: actions/checkout@v3
+  #     -
+  #       name: Login to DockerHub
+  #       uses: docker/login-action@v2
+  #       with:
+  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     -
+  #       name: Build and push
+  #       uses: docker/build-push-action@v3
+  #       with:
+  #         context: ./rabbitmq/windows/latest
+  #         push: true
+  #         tags: micdenny/rabbitmq-windows:latest
+
+  build-docker-ltsc2022:
+    runs-on: windows-2022
     steps:
       -
         name: Checkout
@@ -24,54 +44,46 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push 3.10.7
         uses: docker/build-push-action@v3
         with:
-          context: ./rabbitmq/windows/latest
+          context: ./rabbitmq/windows/3.10.7
           push: true
-          tags: micdenny/rabbitmq-windows:latest
+          tags: |
+            micdenny/rabbitmq-windows:3.10.7
+            micdenny/rabbitmq-windows:3.10
+            micdenny/rabbitmq-windows:3.10.7-servercore-ltsc2022
+            micdenny/rabbitmq-windows:3.10-ltsc2022-latest
+            micdenny/rabbitmq-windows:latest
+          build-args: |
+            SERVER_VERSION=ltsc2022
 
-  build-docker-38:
-    runs-on: windows-2019
-    steps:
       -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
+        name: Build and push 3.8.35
         uses: docker/build-push-action@v3
         with:
           context: ./rabbitmq/windows/3.8.35
           push: true
-          tags: micdenny/rabbitmq-windows:3.8.35
+          tags: |
+            micdenny/rabbitmq-windows:3.8.35
+            micdenny/rabbitmq-windows:3.8.35-servercore-ltsc2022
+          build-args: |
+            SERVER_VERSION=ltsc2022
 
-  build-docker-39:
-    runs-on: windows-2019
-    steps:
       -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
+        name: Build and push 3.9.22
         uses: docker/build-push-action@v3
         with:
-          context: ./rabbitmq/windows/3.9.22
+          context: ./rabbitmq/windows/3.89.22
           push: true
-          tags: micdenny/rabbitmq-windows:3.9.22
+          tags: |
+            micdenny/rabbitmq-windows:3.9.22
+            micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2022
+          build-args: |
+            SERVER_VERSION=ltsc2022
 
-  build-docker-310:
+
+  build-docker-ltsc2019:
     runs-on: windows-2019
     steps:
       -
@@ -89,4 +101,32 @@ jobs:
         with:
           context: ./rabbitmq/windows/3.10.7
           push: true
-          tags: micdenny/rabbitmq-windows:3.10.7
+          tags: |
+            micdenny/rabbitmq-windows:3.10.7
+            micdenny/rabbitmq-windows:3.10.7-servercore-ltsc2019
+          build-args: |
+            SERVER_VERSION=ltsc2019
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./rabbitmq/windows/3.9.22
+          push: true
+          tags: |
+            micdenny/rabbitmq-windows:3.9.22
+            micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2019
+          build-args: |
+            SERVER_VERSION=ltsc2019
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./rabbitmq/windows/3.8.35
+          push: true
+          tags: |
+            micdenny/rabbitmq-windows:3.8.35
+            micdenny/rabbitmq-windows:3.8.35-servercore-ltsc2019
+          build-args: |
+            SERVER_VERSION=ltsc2019
