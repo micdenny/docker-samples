@@ -2,7 +2,6 @@
 # Just a work in progress version, not fully implemented. For conceptual purpose only.
 # Need to add more steps and tested to make it functional fully. But this can be achieved.  
 
-#thingxcloud for just testing
 
 name: ci-windows-latest
 
@@ -13,7 +12,29 @@ on:
       - 'master'
 
 jobs:
+  # build-docker-latest:  #this step can be removed later
+  #   runs-on: windows-2022
+  #   steps:
+  #     -
+  #       name: Checkout
+  #       uses: actions/checkout@v3
+  #     -
+  #       name: Login to DockerHub
+  #       uses: docker/login-action@v2
+  #       with:
+  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     -
+  #       name: Build and push
+  #       uses: docker/build-push-action@v3
+  #       with:
+  #         context: ./rabbitmq/windows/latest
+  #         push: true
+  #         tags: thingxcloud/rabbitmq-windows:latest
 
+
+
+ # TO-DO: Could simplify steps further, but probably in next iteration 
   build-docker-ltsc2022:
     runs-on: windows-2022
     steps:
@@ -26,45 +47,43 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push 3.10.7
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.10.7
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.10.7
-            thingxcloud/rabbitmq-windows:3.10
-            thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2022
-            thingxcloud/rabbitmq-windows:3.10-ltsc2022-latest
-            thingxcloud/rabbitmq-windows:latest
-          build-args: |
-            SERVER_VERSION=ltsc2022
 
-      -
-        name: Build and push 3.8.35
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.8.35
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.8.35
-            thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2022
-          build-args: |
-            SERVER_VERSION=ltsc2022
+      # Build and Push 3.10.7
+      - name: Build the Docker image 3.10.7
+        run: |
+          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-args SERVER_VERSION=ltsc2022
+      - name: Publish to DockerHub 3.10.7
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:latest thingxcloud/rabbitmq-windows:3.10.7
+          docker tag thingxcloud/rabbitmq-windows:latest thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2022
+          docker push thingxcloud/rabbitmq-windows:latest
+          docker push thingxcloud/rabbitmq-windows:3.10.7
+          docker push thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2022
+          
+      # Build and Push 3.9.22
+      - name: Build the Docker image 3.9.22
+        run: |
+          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-args SERVER_VERSION=ltsc2022
+      - name: Publish to DockerHub 3.9.22
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:3.9.22 thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2022
+          docker push thingxcloud/rabbitmq-windows:3.9.22
+          docker push thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2022
 
-      -
-        name: Build and push 3.9.22
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.9.22
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.9.22
-            thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2022
-          build-args: |
-            SERVER_VERSION=ltsc2022
+      # Build and Push 3.8.35
 
+      - name: Build the Docker image 3.8.35
+        run: |
+          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-args SERVER_VERSION=ltsc2022
+      - name: Publish to DockerHub 3.8.35
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:3.8.35 thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2022
+          docker push thingxcloud/rabbitmq-windows:3.8.35
+          docker push thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2022
+        
 
   build-docker-ltsc2019:
     runs-on: windows-2019
@@ -78,38 +97,38 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.10.7
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.10.7
-            thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2019
-          build-args: |
-            SERVER_VERSION=ltsc2019
+       # Build and Push 3.10.7
+      - name: Build the Docker image 3.10.7
+        run: |
+          docker build . --file ./rabbitmq/windows/3.10.7/Dockerfile --tag thingxcloud/rabbitmq-windows:latest --build-args SERVER_VERSION=ltsc2019
+      - name: Publish to DockerHub 3.10.7
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:latest thingxcloud/rabbitmq-windows:3.10.7
+          docker tag thingxcloud/rabbitmq-windows:latest thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2019
+          docker push thingxcloud/rabbitmq-windows:latest
+          docker push thingxcloud/rabbitmq-windows:3.10.7
+          docker push thingxcloud/rabbitmq-windows:3.10.7-servercore-ltsc2019
+          
+      # Build and Push 3.9.22
+      - name: Build the Docker image 3.9.22
+        run: |
+          docker build . --file ./rabbitmq/windows/3.9.22/Dockerfile --tag thingxcloud/rabbitmq-windows:3.9.22 --build-args SERVER_VERSION=ltsc2019
+      - name: Publish to DockerHub 3.9.22
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:3.9.22 thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2019
+          docker push thingxcloud/rabbitmq-windows:3.9.22
+          docker push thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2019
 
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.9.22
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.9.22
-            thingxcloud/rabbitmq-windows:3.9.22-servercore-ltsc2019
-          build-args: |
-            SERVER_VERSION=ltsc2019
+      # Build and Push 3.8.35
 
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: ./rabbitmq/windows/3.8.35
-          push: true
-          tags: |
-            thingxcloud/rabbitmq-windows:3.8.35
-            thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2019
-          build-args: |
-            SERVER_VERSION=ltsc2019
+      - name: Build the Docker image 3.8.35
+        run: |
+          docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag thingxcloud/rabbitmq-windows:3.8.35 --build-args SERVER_VERSION=ltsc2019
+      - name: Publish to DockerHub 3.8.35
+        run: |
+          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag thingxcloud/rabbitmq-windows:3.8.35 thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2019
+          docker push thingxcloud/rabbitmq-windows:3.8.35
+          docker push thingxcloud/rabbitmq-windows:3.8.35-servercore-ltsc2019
