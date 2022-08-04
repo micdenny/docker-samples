@@ -3,7 +3,10 @@
 - [`3.6.9`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.6.9/Dockerfile)
 - [`3.6.12`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.6.12/Dockerfile)
 - [`3.8.16`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.8.16/Dockerfile)
-- [`3.9.8`, `latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.8/Dockerfile)
+- [`3.8.35`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.8.35/Dockerfile)
+- [`3.9.8`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.8/Dockerfile)
+- [`3.9.22`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.22/Dockerfile)
+- [`3.10.7`, `latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.10.7/Dockerfile)
 
 # What is RabbitMQ?
 
