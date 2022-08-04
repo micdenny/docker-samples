@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push 3.10.7
+        name: Build and push 3.10.7-latest
         uses: docker/build-push-action@v3
         with:
           context: ./rabbitmq/windows/3.10.7
@@ -96,7 +96,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push 3.10.7
         uses: docker/build-push-action@v3
         with:
           context: ./rabbitmq/windows/3.10.7
@@ -108,7 +108,7 @@ jobs:
             SERVER_VERSION=ltsc2019
 
       -
-        name: Build and push
+        name: Build and push 3.9.22
         uses: docker/build-push-action@v3
         with:
           context: ./rabbitmq/windows/3.9.22
@@ -120,7 +120,7 @@ jobs:
             SERVER_VERSION=ltsc2019
 
       -
-        name: Build and push
+        name: Build and push 3.8.35
         uses: docker/build-push-action@v3
         with:
           context: ./rabbitmq/windows/3.8.35
