@@ -1,23 +1,23 @@
-name: Docker Image CI 
+# name: Docker Image CI 
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+# on:
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
 
-jobs:
+# jobs:
 
-  build:
+#   build:
 
-    runs-on: windows-2022
+#     runs-on: windows-2022
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Build the Docker image
+#       run: |
         
-        docker build . --file ./rabbitmq/windows/latest/Dockerfile --tag thingxcloud/rabbitmq-windows:latest
+#         docker build . --file ./rabbitmq/windows/latest/Dockerfile --tag thingxcloud/rabbitmq-windows:latest
 #    - name: Publish to DockerHub
  #     run: |
  #       echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
