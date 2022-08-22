@@ -1,4 +1,6 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+# ltsc2019 or ltsc2022
+ARG SERVER_VERSION='ltsc2019'  
+FROM mcr.microsoft.com/windows/servercore:${SERVER_VERSION}
 
 LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.8.16"
 
