@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - master
+      - releases/**  # in future to release from release branch
+    paths:
+      - rabbitmq/windows/**   # build only where an update to windows folder 
+      - .github/workflows/ci-windows-latest.yaml
 
 jobs:
 
