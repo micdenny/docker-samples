@@ -12,11 +12,10 @@ jobs:
   build-docker-ltsc2022:
     runs-on: windows-2022
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Login to DockerHub
+        
+      - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -89,15 +88,15 @@ jobs:
   build-docker-ltsc2019:
     runs-on: windows-2019
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Login to DockerHub
+        
+      - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
        # Build and Push 3.10.7
       - name: Build the Docker image 3.10.7
         run: |
@@ -119,7 +118,6 @@ jobs:
           docker push micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2019
 
       # Build and Push 3.8.35
-
       - name: Build the Docker image 3.8.35
         run: |
           docker build . --file ./rabbitmq/windows/3.8.35/Dockerfile --tag micdenny/rabbitmq-windows:3.8.35-ltsc2019 --build-arg SERVER_VERSION=ltsc2019
