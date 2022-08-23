@@ -1,39 +1,12 @@
-
-# Just a work in progress version, not fully implemented. For conceptual purpose only.
-# Need to add more steps and tested to make it functional fully. But this can be achieved.  
-
-
 name: ci-windows-latest
 
 on:
   push:
     branches:
-      - 'main'
-      - 'master'
+      - main
+      - master
 
 jobs:
-  # build-docker-latest:  #this step can be removed later
-  #   runs-on: windows-2022
-  #   steps:
-  #     -
-  #       name: Checkout
-  #       uses: actions/checkout@v3
-  #     -
-  #       name: Login to DockerHub
-  #       uses: docker/login-action@v2
-  #       with:
-  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
-  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
-  #     -
-  #       name: Build and push
-  #       uses: docker/build-push-action@v3
-  #       with:
-  #         context: ./rabbitmq/windows/latest
-  #         push: true
-  #         tags: micdenny/rabbitmq-windows:latest
-
-
-
  # TO-DO: Could simplify steps further, but probably in next iteration 
  # For now a quick approach 
   build-docker-ltsc2022:
