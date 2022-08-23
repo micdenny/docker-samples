@@ -3,7 +3,11 @@
 - [`3.6.9`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.6.9/Dockerfile)
 - [`3.6.12`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.6.12/Dockerfile)
 - [`3.8.16`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.8.16/Dockerfile)
-- [`3.9.8`, `latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.8/Dockerfile)
+- [`3.8.35`,`3.8.35-servercore-ltsc2019`,`3.8.35-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.8.35/Dockerfile)
+- [`3.9.8`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.8/Dockerfile)
+- [`3.9.22`,`3.9.22-servercore-ltsc2019`,`3.9.22-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.22/Dockerfile)
+- [`3.10.7`,`3.10.7-servercore-ltsc2019`,`3.10.7-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.10.7/Dockerfile)
+- [`latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/latest/Dockerfile)
 
 # What is RabbitMQ?
 
@@ -21,6 +25,13 @@ One of the important things to note about RabbitMQ is that it stores data based 
 
 ```
 docker run -d --hostname my-rabbit --name some-rabbit micdenny/rabbitmq-windows
+```
+
+Specific version 
+```dotnetcli
+docker run -d --hostname my-rabbit --name some-rabbit1 micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2019 
+Or
+docker run -d --hostname my-rabbit --name some-rabbit2 micdenny/rabbitmq-windows:3.9.22-servercore-ltsc2022 
 ```
 
 ### Management Plugin

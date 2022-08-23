@@ -1,4 +1,6 @@
-FROM microsoft/windowsservercore
+# ltsc2019 or ltsc2022
+ARG SERVER_VERSION='ltsc2019'  
+FROM mcr.microsoft.com/windows/servercore:${SERVER_VERSION}
 
 LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.6.12"
 
@@ -20,7 +22,7 @@ EXPOSE 5672 15672
 RUN Invoke-WebRequest -Uri "http://www.erlang.org/download/otp_win64_20.1.exe" -OutFile "c:\\erlang_install.exe" ; \
         Start-Process -Wait -FilePath "c:\\erlang_install.exe" -ArgumentList /S, /D=$env:ERLANG_HOME ; \
         Remove-Item -Force -Path "C:\\erlang_install.exe" ; \
-    Invoke-WebRequest -Uri "https://www.rabbitmq.com/releases/rabbitmq-server/v$env:RABBITMQ_VERSION/rabbitmq-server-windows-$env:RABBITMQ_VERSION.zip" -OutFile "c:\\rabbitmq.zip" ; \
+    Invoke-WebRequest -Uri "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_12/rabbitmq-server-windows-$env:RABBITMQ_VERSION.zip" -OutFile "c:\\rabbitmq.zip" ; \
         Expand-Archive -Path "c:\\rabbitmq.zip" -DestinationPath "c:\\" ; \
         Remove-Item -Force -Path "c:\\rabbitmq.zip" ; \
     Rename-Item -Path "c:\\rabbitmq_server-$env:rabbitmq_version" -NewName "c:\\rabbitmq"
