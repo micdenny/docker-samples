@@ -1,0 +1,23 @@
+name: Patch Docker Hub Description
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - rabbitmq/README.md
+      - .github/workflows/dockerhub-description.yaml
+jobs:
+  dockerHubDescription:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Patch Docker Hub Description
+      uses: peter-evans/dockerhub-description@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: micdenny/rabbitmq-windows
+        readme-filepath: ./rabbitmq/README.md
+        #short-description: ${{ github.event.repository.description }}
