@@ -2,13 +2,13 @@
 ARG SERVER_VERSION='ltsc2022'  
 FROM mcr.microsoft.com/windows/servercore:${SERVER_VERSION}
 
-LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.10.7"
+LABEL Description="RabbitMQ" Vendor="Pivotal" Version="3.10.10"
 
 # ERLANG_HOME: erlang will install to this location and rabbitmq will use this environment variable to locate it
 # RABBITMQ_VERSION: rabbitmq version used in download url and to rename folder extracted from zip file
 # RABBITMQ_CONFIG_FILE: tell rabbitmq where to find our custom config file
 ENV ERLANG_HOME="c:\\erlang" \
-    RABBITMQ_VERSION="3.10.7" \
+    RABBITMQ_VERSION="3.10.10" \
     RABBITMQ_CONFIG_FILE="c:\\rabbitmq.conf"
 
 # setup powershell options for RUN commands

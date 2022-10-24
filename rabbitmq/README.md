@@ -6,8 +6,11 @@
 - [`3.8.35`,`3.8.35-servercore-ltsc2019`,`3.8.35-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.8.35/Dockerfile)
 - [`3.9.8`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.8/Dockerfile)
 - [`3.9.22`,`3.9.22-servercore-ltsc2019`,`3.9.22-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.22/Dockerfile)
+- [`3.9.24`,`3.9.24-servercore-ltsc2019`,`3.9.24-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.9.24/Dockerfile)
 - [`3.10.7`,`3.10.7-servercore-ltsc2019`,`3.10.7-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.10.7/Dockerfile)
-- [`latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/latest/Dockerfile)
+- [`3.10.10`,`3.10.10-servercore-ltsc2019`,`3.10.10-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.10.10/Dockerfile)
+- [`3.11.2`,`3.11.2-servercore-ltsc2019`,`3.11.2-servercore-ltsc2022`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/3.11.2/Dockerfile)
+- [`latest`,`ltsc2019-latest`,`ltsc2022-latest`](https://github.com/micdenny/docker-samples/blob/master/rabbitmq/windows/latest/Dockerfile)
 
 # What is RabbitMQ?
 

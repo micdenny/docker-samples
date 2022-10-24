@@ -19,7 +19,7 @@ EXPOSE 5672 15672
 # download and install erlang using silent install option, and remove installer when done
 # download and extract rabbitmq, and remove zip file when done
 # remove version from rabbitmq folder name
-RUN Invoke-WebRequest -Uri "https://erlang.org/download/otp_win64_24.3.4.exe" -OutFile "c:\\erlang_install.exe" ; \
+RUN Invoke-WebRequest -Uri "https://erlang.org/download/otp_win64_24.3.4.6.exe" -OutFile "c:\\erlang_install.exe" ; \
         Start-Process -Wait -FilePath "c:\\erlang_install.exe" -ArgumentList /S, /D=$env:ERLANG_HOME ; \
         Remove-Item -Force -Path "C:\\erlang_install.exe" ; \
     Invoke-WebRequest -Uri "https://github.com/rabbitmq/rabbitmq-server/releases/download/v$env:RABBITMQ_VERSION/rabbitmq-server-windows-$env:RABBITMQ_VERSION.zip" -OutFile "c:\\rabbitmq.zip" ; \
